@@ -1,3 +1,4 @@
+import showItems from "./showItems.js";
 export default () => {
   let shoppingList = [];
   const form = document.getElementById("form-itens");
@@ -21,6 +22,7 @@ export default () => {
       alert("Item adicionado");
       shoppingList.push({ value: shoppingItem });
     }
+    showItems(shoppingList);
 
     console.log(shoppingList);
     itemInput.value = "";
