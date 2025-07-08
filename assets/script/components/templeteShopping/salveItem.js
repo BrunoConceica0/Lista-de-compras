@@ -1,5 +1,4 @@
 import showItems from "./showItems.js";
-import inputCheck from "../../inputCheck.js";
 import storange from "../parcial/localStorange.js";
 export default () => {
   let shoppingList = storange.getLocalStorage("shoppingList");
@@ -14,14 +13,16 @@ export default () => {
   });
 
   function salveItem() {
-    const shoppingItem = itemInput.value.trim().toLowerCase();
+    const shoppingItem = itemInput.value.trim();
+
     const chececkedDublicate = shoppingList.some(
-      (element) => element.value === shoppingItem
+      (element) => element.value.toLowerCase() === shoppingItem.toLowerCase()
     );
 
     if (chececkedDublicate) {
       alert("Item já foi adicionado");
       itemInput.value = "";
+      itemInput.focus();
       return;
     } else {
       alert("Item adicionado");
@@ -34,5 +35,4 @@ export default () => {
 
     itemInput.value = "";
   }
-  inputCheck();
 };
