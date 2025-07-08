@@ -47,7 +47,16 @@ function showItems(shoppingList) {
       "",
       "fa-solid fa-trash is-clickable deletar"
     );
-
+    const iconSalve = new CreateElement(
+      "i",
+      "",
+      "fa-regular fa-floppy-disk is-clickable salve"
+    );
+    const iconEdit = new CreateElement(
+      "i",
+      "",
+      "fa-regular is-clickable fa-pen-to-square editar"
+    );
     // Monta estrutura
     li.el.appendChild(divInput.el);
     li.el.appendChild(divDelete.el);
@@ -60,6 +69,8 @@ function showItems(shoppingList) {
       listPurchase.appendChild(li.el);
     } else {
       listItems.appendChild(li.el);
+      divDelete.el.appendChild(iconSalve.el);
+      divDelete.el.appendChild(iconEdit.el);
     }
   });
   deleteShopping(shoppingList);

@@ -16,6 +16,11 @@ footer {
 button {
   border: none;
 }
+.is-clickable {
+  cursor: pointer;
+  margin: 5px;
+  padding: 6px 2px;
+}
 
 .itens-comprados {
   text-decoration: line-through;
