@@ -1,3 +1,3 @@
-import salveItem from "./salveItem.js";
+import salveItem from "./components/templeteShopping/salveItem.js";
 
 salveItem();

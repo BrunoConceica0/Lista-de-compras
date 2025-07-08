@@ -1,6 +1,10 @@
 import showItems from "./showItems.js";
+import inputCheck from "../../inputCheck.js";
+import storange from "../parcial/localStorange.js";
 export default () => {
-  let shoppingList = [];
+  let shoppingList = storange.getLocalStorage("shoppingList");
+
+  showItems(shoppingList);
   const form = document.getElementById("form-itens");
   const itemInput = document.getElementById("receber-item");
 
@@ -17,14 +21,18 @@ export default () => {
 
     if (chececkedDublicate) {
       alert("Item já foi adicionado");
+      itemInput.value = "";
       return;
     } else {
       alert("Item adicionado");
-      shoppingList.push({ value: shoppingItem });
+      shoppingList.push({ value: shoppingItem, checked: false });
     }
+
+    storange.setLocalStorage("shoppingList", shoppingList);
+
     showItems(shoppingList);
 
-    console.log(shoppingList);
     itemInput.value = "";
   }
+  inputCheck();
 };

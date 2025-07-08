@@ -10,8 +10,11 @@ class CreateElement {
       element.appendChild(this.el);
     }
   }
-  setAttrubute(name, value) {
+  setAttribute(name, value) {
     this.el.setAttribute(name, value);
+  }
+  on(event, callback) {
+    this.el.addEventListener(event, callback);
   }
 }
 export default CreateElement;
