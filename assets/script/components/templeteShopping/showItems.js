@@ -1,6 +1,6 @@
 import CreateElement from "../parcial/createTags.js";
 import storange from "../parcial/localStorange.js";
-import deleteShopping from "./deleteshopping.js";
+import deleteShopping from "./deleteShopping.js";
 import editItem from "./editItem.js";
 
 const listItems = document.getElementById("lista-de-itens");
