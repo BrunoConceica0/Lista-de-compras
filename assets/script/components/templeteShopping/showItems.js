@@ -1,5 +1,6 @@
 import CreateElement from "../parcial/createTags.js";
 import storange from "../parcial/localStorange.js";
+import deleteShopping from "./deleteshopping.js";
 
 const listItems = document.getElementById("lista-de-itens");
 const listPurchase = document.getElementById("itens-comprados");
@@ -60,6 +61,7 @@ function showItems(shoppingList) {
       listItems.appendChild(li.el);
     }
   });
+  deleteShopping(shoppingList);
 }
 
 export default showItems;
