@@ -18,8 +18,8 @@ button {
 }
 .is-clickable {
   cursor: pointer;
-  margin: 5px;
-  padding: 6px 2px;
+  margin: 5px 7px;
+  padding: 7px 4px;
 }
 
 .itens-comprados {
@@ -61,4 +61,16 @@ input {
 .alerta.mostrar {
   opacity: 1;
   pointer-events: auto;
+}
+@media (max-width: 800px) {
+  .alerta {
+    top: 10px;
+    right: 10px;
+  }
+  .item-compra {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+  }
 }
