@@ -19,7 +19,7 @@ function showItems(shoppingList) {
     li.setAttribute("data-value", index);
 
     // Div dos inputs
-    const divInput = new CreateElement("div", "", "");
+    const divInput = new CreateElement("div", "", "input-item");
 
     const checkbox = new CreateElement("input", "", "is-clickable");
     checkbox.el.type = "checkbox";
