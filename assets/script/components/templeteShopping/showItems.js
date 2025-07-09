@@ -18,36 +18,36 @@ function showItems(shoppingList) {
     );
     li.setAttribute("data-value", index);
 
+    // Div dos inputs
     const divInput = new CreateElement("div", "", "");
 
-    const inputCheck = new CreateElement("input", "", "is-clickable");
-    inputCheck.el.type = "checkbox";
-    inputCheck.el.checked = item.checked;
+    const checkbox = new CreateElement("input", "", "is-clickable");
+    checkbox.el.type = "checkbox";
+    checkbox.el.checked = item.checked;
 
     const inputText = new CreateElement("input", "", "is-size-5");
     inputText.el.type = "text";
     inputText.el.value = item.value;
 
-    // Aplica estilo visual se estiver marcado
     if (item.checked) {
       inputText.el.style.textDecoration = "line-through";
       inputText.el.style.color = "gray";
     }
 
-    // Evento: quando checkbox muda
-    inputCheck.on("change", () => {
-      item.checked = inputCheck.el.checked;
+    checkbox.on("change", () => {
+      item.checked = checkbox.el.checked;
       storange.setLocalStorage("shoppingList", shoppingList);
-      showItems(shoppingList); // re-renderiza tudo com base no novo estado
+      showItems(shoppingList); // re-renderiza a lista (boa prática quando o item muda de seção)
     });
 
-    const divDelete = new CreateElement("div", "", "");
-    const icon = new CreateElement(
+    const divActions = new CreateElement("div", "", "");
+
+    const iconDelete = new CreateElement(
       "i",
       "",
       "fa-solid fa-trash is-clickable deletar"
     );
-    const iconSalve = new CreateElement(
+    const iconSave = new CreateElement(
       "i",
       "",
       "fa-regular fa-floppy-disk is-clickable salve"
@@ -55,24 +55,29 @@ function showItems(shoppingList) {
     const iconEdit = new CreateElement(
       "i",
       "",
-      "fa-regular is-clickable fa-pen-to-square editar"
+      "fa-regular fa-pen-to-square is-clickable editar"
     );
-    // Monta estrutura
-    li.el.appendChild(divInput.el);
-    li.el.appendChild(divDelete.el);
-    divInput.el.appendChild(inputCheck.el);
-    divInput.el.appendChild(inputText.el);
-    divDelete.el.appendChild(icon.el);
 
-    // Decide onde adicionar o item (lista principal ou de compras)
-    if (item.checked) {
-      listPurchase.appendChild(li.el);
-    } else {
-      listItems.appendChild(li.el);
-      divDelete.el.appendChild(iconSalve.el);
-      divDelete.el.appendChild(iconEdit.el);
+    // Monta estrutura
+    divInput.el.appendChild(checkbox.el);
+    divInput.el.appendChild(inputText.el);
+    li.el.appendChild(divInput.el);
+    li.el.appendChild(divActions.el);
+
+    // Condicional de botões
+    divActions.el.appendChild(iconDelete.el);
+    if (!item.checked) {
+      divActions.el.appendChild(iconSave.el);
+      divActions.el.appendChild(iconEdit.el);
     }
+
+    // Append na lista correta
+    item.checked
+      ? listPurchase.appendChild(li.el)
+      : listItems.appendChild(li.el);
   });
+
+  // Funções externas (delegadas)
   deleteShopping(shoppingList);
   editItem(shoppingList);
 }
