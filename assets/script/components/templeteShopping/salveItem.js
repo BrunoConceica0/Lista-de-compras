@@ -1,6 +1,6 @@
 import showItems from "./showItems.js";
 import storange from "../parcial/localStorange.js";
-import showAlertshopping from "../parcial/showAlertshopping.js";
+import showAlert from "../parcial/showAlert.js";
 export default () => {
   let shoppingList = storange.getLocalStorage("shoppingList");
 
@@ -23,10 +23,11 @@ export default () => {
     if (chececkedDublicate) {
       itemInput.value = "";
       itemInput.focus();
+      showAlert("Item já adicionado!", "erro");
       return;
     } else {
-      showAlertshopping();
       shoppingList.push({ value: shoppingItem, checked: false });
+      showAlert("Item adicionado com sucesso!", "success");
     }
 
     storange.setLocalStorage("shoppingList", shoppingList);

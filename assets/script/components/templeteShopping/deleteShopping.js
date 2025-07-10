@@ -1,6 +1,6 @@
 import storange from "../parcial/localStorange.js";
 import showItems from "./showItems.js";
-import showAlert from "../parcial/showAlertRemove.js";
+import showAlert from "../parcial/showAlert.js";
 export default (shoppingList) => {
   const deleteShopping = document.querySelectorAll(".deletar");
 
@@ -12,7 +12,7 @@ export default (shoppingList) => {
       shoppingList.splice(indexItem, 1);
       storange.setLocalStorage("shoppingList", shoppingList);
       showItems(shoppingList);
-      showAlert();
+      showAlert("Item removido com sucesso!", "success");
     });
   });
 };

@@ -1,4 +1,5 @@
 import storange from "../parcial/localStorange.js";
+import showAlert from "../parcial/showAlert.js";
 
 export default (shoppingList) => {
   const editItemButtons = document.querySelectorAll(".editar");
@@ -13,6 +14,7 @@ export default (shoppingList) => {
       const input = inputTextList[index];
       input.removeAttribute("readonly"); // permite editar
       input.focus();
+      showAlert("Cuidado item sendo editado!", "warning");
     });
   });
 
@@ -22,6 +24,7 @@ export default (shoppingList) => {
       inputTextList.forEach((input, index) => {
         shoppingList[index].value = input.value.trim();
         input.setAttribute("readonly", true); // desativa edição após salvar
+        showAlert("Item editado com sucesso!", "success");
       });
       storange.setLocalStorage("shoppingList", shoppingList);
     });
