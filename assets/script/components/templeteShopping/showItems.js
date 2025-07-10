@@ -28,6 +28,7 @@ function showItems(shoppingList) {
     const inputText = new CreateElement("input", "", "is-size-5");
     inputText.el.type = "text";
     inputText.el.value = item.value;
+    inputText.el.style.display = "disabled";
 
     if (item.checked) {
       inputText.el.style.textDecoration = "line-through";
