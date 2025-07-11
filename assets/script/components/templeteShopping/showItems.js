@@ -2,13 +2,13 @@ import CreateElement from "../parcial/createTags.js";
 import storange from "../parcial/localStorange.js";
 import deleteShopping from "./deleteShopping.js";
 import editItem from "./editItem.js";
+import listEmpty from "./listEmpty.js";
 
 const listItems = document.getElementById("lista-de-itens");
 const listPurchase = document.getElementById("itens-comprados");
 const purchased = document.getElementById("shopping");
 
 function showItems(shoppingList) {
-  console.log(shoppingList.length);
   if (shoppingList.length === 0) {
     purchased.style.display = "none";
     listItems.innerHTML = "Nenhum item adicionado";
@@ -42,9 +42,6 @@ function showItems(shoppingList) {
     if (item.checked) {
       inputText.el.style.textDecoration = "line-through";
       inputText.el.style.color = "gray";
-      listItems.innerHTML = "Lista de compras vazia";
-    } else {
-      listItems.innerHTML = "";
     }
 
     checkbox.on("change", () => {
@@ -93,6 +90,7 @@ function showItems(shoppingList) {
   // Funções externas (delegadas)
   deleteShopping(shoppingList);
   editItem(shoppingList);
+  listEmpty(shoppingList);
 }
 
 export default showItems;
