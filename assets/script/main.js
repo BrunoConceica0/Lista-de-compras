@@ -1,3 +1,5 @@
-import salveItem from "./components/templeteShopping/salveItem.js";
+import home from "./views/home.js";
+import listShopping from "./views/listShopping.js";
 
-salveItem();
+home();
+listShopping();

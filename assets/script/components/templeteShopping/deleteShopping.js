@@ -1,5 +1,5 @@
 import storange from "../parcial/localStorange.js";
-import showItems from "./showItems.js";
+import showItems from "../../views/listShopping.js";
 import showAlert from "../parcial/showAlert.js";
 export default (shoppingList) => {
   const deleteShopping = document.querySelectorAll(".deletar");

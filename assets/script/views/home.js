@@ -1,6 +1,6 @@
-import showItems from "./showItems.js";
-import storange from "../parcial/localStorange.js";
-import showAlert from "../parcial/showAlert.js";
+import showItems from "./listShopping.js";
+import storange from "../components/parcial/localStorange.js";
+import showAlert from "../components/parcial/showAlert.js";
 export default () => {
   let shoppingList = storange.getLocalStorage("shoppingList");
 
